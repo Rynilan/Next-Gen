@@ -1,0 +1,16 @@
+# Arquivos de informação dos devs.
+.env
+.htaccess
+*.zip
+*.txt
+*.sql
+
+# Dependências do php
+vendor/*
+composer.lock
+
+# Dependências do js
+node_modules/*
+package-lock.json
+dist/*
+coverage/*

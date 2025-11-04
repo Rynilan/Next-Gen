@@ -1,0 +1,91 @@
+.interno {
+	border-radius: 50%;
+	background-color: #006400;
+	color: white;
+}
+#capsula > img {
+	border: 1px solid black;
+	border-radius: 50%;
+	min-width: 39px;
+	max-width: 40px;
+}
+#topo {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: -10px;
+}
+#topo > .interno, #capsula > .interno {
+	border: none;
+	background-color: white;
+	color: black;
+	margin: 0px;
+}
+#capsula {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex: 0;
+}
+#descricao {
+	margin: 30px 12px 20px;
+}
+#chat {
+	max-height: 600px;
+	min-height: 200px;
+	width: 100%;
+	overflow-y: auto;
+}
+#interacao {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+#interacao > .interno {
+	cursor: pointer;
+	margin: 0px -10px;
+}
+input {
+	padding: 6px;
+	width: 90%;
+	border-radius: 10px;
+	border: 2px solid gray;
+}
+.ia, .humano {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 10px 0px;
+}
+.humano {
+	justify-content: flex-end;
+}
+.ia > p, .humano > p {
+	border-radius: 8px;
+	padding: 8px;
+	max-width: 60%;
+}
+.ia > p {
+	background-color: #888;
+}
+.humano > .interno {
+	cursor: default;
+}
+.ia > .interno {
+	background-color: gray;
+	cursor: default;
+}
+.humano > p {
+	background-color: #10AA10;
+	order: 1;
+}
+.humano > span {
+	order: 2;
+}
+@media (orientation: portrait) {
+	img {
+		width: 15%;
+	}
+}

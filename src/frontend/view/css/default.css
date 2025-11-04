@@ -1,0 +1,91 @@
+/* Reiniciador global */
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+/* Posicionamento das divs */
+body, html {
+	width: 100%;
+	height: 100%;
+	background-color: #006400;
+}
+#body {
+	width: 100%;
+	height: 100%;
+}
+main {
+	width: 40%;
+	margin: 50px auto;
+	padding: 40px;
+	min-height: 80%;
+	background-color: white;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+header {
+	border-bottom: 2px solid gold;
+	border-radius: 12px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+footer {
+	padding: 30px;
+	border-top: 2px solid gold;
+	border-radius: 12px;
+}
+
+/* Estilização dos elementos das divs */
+.material-symbols-outlined {
+	background-color: gold;
+	border-radius: 12px;
+	border: 2px solid black;
+	margin: 8px;
+	padding: 4px;
+	cursor: pointer;
+}
+.material-symbols-outlined:hover {
+	transform: scale(1.1);
+	color: white;
+	border: 2px solid white;
+	transition: 0.5s;
+}
+h1 {
+	font-size: 48px;
+	color: gold;
+}
+h2 {
+	text-align: center;
+}
+hr {
+	margin: 12px;
+}
+ul {
+	list-style-type: none;
+	color: white;
+	font-weight: bold;
+}
+.contato {
+	color: #add8e6;
+}
+.contato:visited {
+	color: #d8b4fe;
+}
+header > img {
+	margin: 8px;
+	width: 5%;
+	border: none;
+	cursor: pointer;
+}
+
+@media (orientation: portrait) {
+	main {
+		width: 90%;
+		padding: 20px;
+	}
+	header > img {
+		width: 15%;
+	}
+}

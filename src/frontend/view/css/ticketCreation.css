@@ -1,0 +1,46 @@
+#centralizador {
+	margin: 0px;
+	text-align: center;
+}
+button {
+	padding: 10px;
+	margin: 20px;
+	color: white;
+	background: #006400;
+	border-radius: 12px;
+	font-size: 20px;
+	cursor: pointer;
+}
+button:hover {
+	color: gold;
+	border: 2px solid gold;
+	transform: scale(1.1);
+	transition: 0.8s;
+}
+p, textarea {
+	margin: 4px 0px;
+}
+select, input {
+	margin: 0px 0px 20px;
+	padding: 6px;
+	border-radius: 8px;
+	width: 80%;
+}
+select:hover, textarea:hover {
+	border: 2px solid #006400;
+	transition: 0.8s;
+}
+textarea {
+	padding: 8px;
+	border-radius: 12px;
+	width: 100%;
+}
+hr {
+	margin: 12px 12px 20px 12px;
+}
+
+@media (orientation: portrait) {
+	select {
+		width: 70%;
+	}
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-br">
+
+	<head>
+
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>NextGen - Criar chamado</title>
+		<link rel="stylesheet" href="default.css"/>
+		<link rel="stylesheet" href="ticketCreation.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+	</head>
+	<body>
+
+		<div id='body'>
+
+			<header>
+				<img src='logo.png' alt='logo' id='nextGenLogo'/>
+				<h1>NextGen</h1>
+				<span class="material-symbols-outlined">account_circle</span>
+			</header>	
+
+			<main>
+				<h2>Novo chamado</h2>
+				<hr/>
+				<p>Tipo de chamado</p>
+				<select id='tipo'>
+					<option value="-">-</option>
+					<option value="recomendação">Recomendação</option>
+					<option value="reclamação">Reclamação</option>
+				</select>
+				<p>Empresa</p>
+				<select id='empresa'>
+					<option value="-">-</option>
+					<option value="dtel">DTel</option>
+					<option value="senac">SENAC</option>
+					<option value="connected_barber">Connected Barber</option>
+				</select>
+				<p>Anexos relevantes</p>
+				<input type='file' id='anexos'/>
+				<p>Descreva o motivo de seu chamado:</p>
+				<textarea rows="10" cols="50" id='descricao'></textarea>
+				<p id='centralizador'><button onclick='criarChamadoVoltar()'>Criar chamado</button></p>
+			</main>
+
+			<footer>
+				<ul id='contatos'>
+					<li>Email: <a class='contato' href='#'>suporte@nextgen.org</a></li>
+					<li>Telefone: <a class='contato' href='#'>+55 (81) 9 4002-8922</a></li>
+				</ul>
+			</footer>
+
+		</div>
+
+		<script src="navegacao.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,52 @@
+#chamados {
+	margin: auto;
+	width: 95%;
+	aspect-ratio: 1/1;
+}
+.chamado {
+	margin: 10px 0px;
+	background-color: #eee;
+	border-radius: 12px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	border-left: 5px solid #0f0;
+}
+.chamado:hover {
+	background-color: #ccc;
+	transform: scale(1.1);
+	transition: 0.5s;
+	cursor: pointer;
+}
+.img {
+	margin: 10px;
+	width: 15%;
+	aspect-ratio: 1/1;
+	flex-shrink: 0;
+}
+.logo {
+	border-radius: 50%;
+	width: 100%;
+}
+.mensagem {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-top: 6px;
+	color: rgba(0, 0, 0, 0.6);
+}
+button {
+	border-radius: 50%;
+	background-color: #006400;
+	color: white;
+	padding: 12px 16px;
+	font-size: 20px;
+}
+button:hover {
+	transform: scale(1.2);
+	color: gold;
+	transition: 0.4s;
+	border: 2px solid gold;
+}
