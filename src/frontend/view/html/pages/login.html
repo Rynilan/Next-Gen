@@ -1,51 +1,10 @@
-<!doctype html>
-<html lang="pt-br">
-
-	<head>
-
-		<meta charset="UTF-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>NextGen - Entrar</title>
-		<link rel="stylesheet" href="default.css"/>
-		<link rel="stylesheet" href="login.css"/>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-	</head>
-	<body>
-
-		<div id='body'>
-
-			<header id='header'>
-				<img src='logo.png' alt='logo' id='nextGenLogo'/>
-				<h1>NextGen</h1>
-				<span class="material-symbols-outlined">account_circle</span>
-			</header>	
-
-			<main>
-				<h2>Login</h2>
-				<hr/>
-				<div>
-					<img src="logo.png" alt="logo">
-					<p class='dado'>Email:</p>
-					<input id='email' placeholder='examplo@email.com' type="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"/>
-					<p class='dado'>Senha:</p>
-					<input id='senha' type="password" required pattern="^[A-Za-z0-9]{8,}$" placeholder='senha123'/>
-					<p id='cadastre-se'>Não tem uma conta? <a href='#'>Cadastre-se</a></p>
-					<p id='termo'><input id='check' type="checkbox"/> Eu li e concordo com os termos de <a href="#">política de privacidade</a>.</p>
-					<p id='centralizador'><button onclick="login(event)">Entrar</button></p>
-				</div>
-			</main>
-
-			<footer>
-				<ul id='contatos'>
-					<li>Email: <a class='contato' href='#'>suporte@nextgen.org</a></li>
-					<li>Telefone: <a class='contato' href='#'>+55 (81) 9 4002-8922</a></li>
-				</ul>
-			</footer>
-
-		</div>
-
-		<script src="navegacao.js"></script>
-	</body>
-
-</html>
+<div>
+	<img id='loginLogo' alt="logo">
+	<p class='data'>Email:</p>
+	<input id='email' placeholder='examplo@email.com' type="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"/>
+	<p class='data'>Senha:</p>
+	<input id='password' type="password" required pattern="^[A-Za-z0-9]{8,}$" placeholder='senha123'/>
+	<p id='register'>Não tem uma conta? <a href='#'>Cadastre-se</a></p>
+	<p id='privacyPolice'><input id='check' type="checkbox"/> Eu li e concordo com os termos de <a href="#">política de privacidade</a>.</p>
+	<p id='centerizer'><button onclick="login(event)">Entrar</button></p>
+</div>

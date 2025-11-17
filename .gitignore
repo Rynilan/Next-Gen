@@ -1,4 +1,5 @@
 # Arquivos de informação dos devs.
+debug/*
 .env
 .htaccess
 *.zip

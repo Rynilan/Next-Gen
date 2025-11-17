@@ -1,0 +1,42 @@
+{
+	"default": {
+		"css": ["default"],
+		"js": []
+	},
+
+	"login": {
+		"title": "NextGen - Login",
+		"css": ["login"],
+		"js": ["login"]
+	},
+	"main": {
+		"title": "NextGen",
+		"css": ["main"],
+		"js": ["navigation"]
+
+	},
+	"ticketCreation": {
+		"title": "Criação de chamado",
+		"css": ["ticketCreation"],
+		"js": ["ticketCreation"]
+	},
+	"chat": {
+		"title": "Next Gen - Chamado com %empresa - %status",
+		"css": ["chat"],
+		"js": ["AIIntegration"]
+	},
+	"erro": {
+		"404": {
+			"title": "404 Not Found"
+		},
+		"401": {
+			"title": "401 Unauthorized"
+		},
+		"403": {
+			"title": "403 Forbiden"
+		},
+		"500": {
+			"title": "500 Internal Server Error"
+		}
+	}
+}
