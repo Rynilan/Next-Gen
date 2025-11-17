@@ -1,0 +1,20 @@
+p {
+	margin: 20px;
+}
+#homeButton {
+	display: block;
+	margin: 0px auto;
+	background-color: var(--royal-gold);
+	padding: 10px;
+	border: 2px solid var(--white);
+	border-radius: 10px;
+	color: var(--white);
+	font-weight: bold;
+	cursor: pointer;
+}
+#homeButton:hover {
+	transition: 0.4s;
+	transform: scale(1.1);
+	border: 2px solid var(--royal-green);
+	color: var(--royal-green);
+}

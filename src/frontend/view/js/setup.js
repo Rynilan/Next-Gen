@@ -51,8 +51,9 @@ async function putContent() {
 	let data = await (await fetch(absoluteUrl('assets/data/app/pageAssets.json'))).json();
 	let page_data = data[PAGE_NAME];
 	if (CODE_ERROR) {
-		console.log(data, PAGE_NAME, CODE_ERROR);
+		console.log(data);
 		page_data = page_data[CODE_ERROR];
+		page_data['js'] = [];
 	}
 	data.default.css.forEach(stylesheet => page_data.css.push(stylesheet));
 	data.default.js.forEach(script => page_data.js.push(script));
