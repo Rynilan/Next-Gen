@@ -5,4 +5,3 @@ echo json_encode([
 	'mail' => $_SESSION['USER_MAIL'],
 	'name' => $_SESSION['USER_NAME']
 ]);
-?>
