@@ -25,17 +25,21 @@
 		"css": ["chat"],
 		"js": ["AIIntegration"]
 	},
-	"erro": {
+	"error": {
 		"404": {
+			"css": ["error"],
 			"title": "404 Not Found"
 		},
 		"401": {
+			"css": ["error"],
 			"title": "401 Unauthorized"
 		},
 		"403": {
+			"css": ["error"],
 			"title": "403 Forbiden"
 		},
 		"500": {
+			"css": ["error"],
 			"title": "500 Internal Server Error"
 		}
 	}
