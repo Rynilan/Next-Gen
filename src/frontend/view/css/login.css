@@ -26,12 +26,12 @@ button {
 	margin: 20px;
 	padding: 8px;
 	background-color: #006400;
-	color: white;
+	color: var(--white);
 	width: 40%;
 	max-width: 300px;
 	border-radius: 12px;
 	font-weight: bold;
-	border: 2px solid white;
+	border: 2px solid var(--white);
 }
 button:hover {
 	transform: scale(1.2);

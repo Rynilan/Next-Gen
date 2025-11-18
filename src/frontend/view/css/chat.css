@@ -1,7 +1,7 @@
 .interno {
 	border-radius: 50%;
 	background-color: #006400;
-	color: white;
+	color: var(--white);
 }
 #capsula > img {
 	border: 1px solid black;
@@ -18,7 +18,7 @@
 }
 #topo > .interno, #capsula > .interno {
 	border: none;
-	background-color: white;
+	background-color: var(--white);
 	color: black;
 	margin: 0px;
 }

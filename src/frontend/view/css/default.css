@@ -106,7 +106,7 @@ header > img {
 	cursor: pointer;
 }
 .menuOption:hover {
-	border: 1px solid white;
+	border: 1px solid var(--white);
 	transform: scale(1.1);
 	transition: 0.4s;
 	color: var(--royal-gold);
