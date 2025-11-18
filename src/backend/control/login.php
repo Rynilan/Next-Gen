@@ -1,4 +1,17 @@
 <?php
+/*
+* Entrada: 
+* 	mail: o email do usuário que está tentando logar.
+* 	password: a senha do usuário que está tentando logar.
+* 	according: valor lógico (0 ou 1) se o usuário concorda com a política de privacidade.
+* Saída: {
+* 	sucess: valor lógico indicando se a operação foi um sucesso.
+* 	redirect: string com link de destino em caso de sucesso, vazio caso contrário.
+* 	error_message: string com saída de erro do código, vazio em caso de sucesso.
+* 	name: string contendo nome do usuário logado, em caso de sucesso, vazio caso contrário.
+* }
+*/
+
 require_once 'loadEnv.php';
 $mail = $_GET['mail'];
 $pass = $_GET['password'];
