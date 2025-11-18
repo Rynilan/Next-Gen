@@ -18,3 +18,10 @@ p {
 	border: 2px solid var(--royal-green);
 	color: var(--royal-green);
 }
+#errorImage {
+	width: 400px;
+	height: 400px;
+	display: block;
+	margin: 10px auto;
+	border-radius: 45%;
+}

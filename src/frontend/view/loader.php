@@ -11,6 +11,7 @@ if ($page === 'error') {
 }
 if ($content === false) {
 	require_once '../../backend/control/loadEnv.php';
+	http_response_code(404);
 	header('Location: '.$_ENV['ROOT_PATH'].'frontend/view/loader.php?page_name=error&code_error=404');
 	exit();
 }

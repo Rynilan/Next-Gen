@@ -28,18 +28,22 @@
 	"error": {
 		"404": {
 			"css": ["error"],
+			"js": ["imageStatus"],
 			"title": "404 Not Found"
 		},
 		"401": {
 			"css": ["error"],
+			"js": ["imageStatus"],
 			"title": "401 Unauthorized"
 		},
 		"403": {
 			"css": ["error"],
+			"js": ["imageStatus"],
 			"title": "403 Forbiden"
 		},
 		"500": {
 			"css": ["error"],
+			"js": ["imageStatus"],
 			"title": "500 Internal Server Error"
 		}
 	}
