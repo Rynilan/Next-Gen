@@ -1,0 +1,4 @@
+{
+	"true": ["main", "ticketCreation", "chat"],
+	"false": ["error", "login", "about"]
+}
