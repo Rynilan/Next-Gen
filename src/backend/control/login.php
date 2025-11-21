@@ -11,8 +11,7 @@
 * 	name: string contendo nome do usuário logado, em caso de sucesso, vazio caso contrário.
 * }
 */
-
-require_once 'loadEnv.php';
+require_once 'utils/loadEnv.php';
 $mail = $_GET['mail'];
 $pass = $_GET['password'];
 $okay = $_GET['according'];
@@ -40,7 +39,7 @@ function compare_data($pass, $stored_pass) {
 }
 
 function set_session_and_get_redirect($mail, $name) {
-	require_once '../control/loadSession.php';
+	require_once 'utils/loadSession.php';
 
 	$_SESSION['USER_MAIL'] = $mail;
 	$_SESSION['USER_NAME'] = $name;
@@ -49,7 +48,7 @@ function set_session_and_get_redirect($mail, $name) {
 }
 
 function login($mail, $pass, $okay) {
-	$data = ["success" => true, "error_message" => '', "name" => ''];
+	$data = ["success" => true, "error_message" => '', "name" => '', 'mail' => ''];
 	switch (valid_data($mail, $pass, $okay)) {
 		case 0:
 			break;
@@ -80,6 +79,9 @@ function login($mail, $pass, $okay) {
 		if (!compare_data($pass, $stored_data['password'])) {
 			$data['success'] = false;
 			$data['error_message'] = 'Credenciais incorretas';
+		} else {
+			$data['name'] = $stored_data['name'];
+			$data['mail'] = $stored_data['mail'];	
 		}
 	}
 	return $data;
@@ -87,7 +89,7 @@ function login($mail, $pass, $okay) {
 
 $result = login($mail, $pass, $okay);
 if ($result['success']) {
-	$result['redirect'] = set_session_and_get_redirect($mail, $result['name']);
+	$result['redirect'] = set_session_and_get_redirect($result['mail'], $result['name']);
 }
 echo json_encode($result);
 

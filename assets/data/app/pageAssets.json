@@ -18,7 +18,7 @@
 	"ticketCreation": {
 		"title": "Criação de chamado",
 		"css": ["ticketCreation"],
-		"js": ["ticketCreation"]
+		"js": ["ticketCreation", "putClients"]
 	},
 	"chat": {
 		"title": "Next Gen - Chamado com %empresa - %status",
