@@ -1,10 +1,10 @@
 <?php
-require_once 'src/backend/control/loadEnv.php';
-require_once 'src/backend/control/loadSession.php';
+include 'src/backend/control/utils/redirect.php';
+require_once 'src/backend/control/utils/loadSession.php';
 
 $_SESSION['USER_MAIL'] = null;
 $_SESSION['USER_NAME'] = null;
 $_SESSION['LOGGED'] = false;
 
-header('Location: '.$_ENV['ROOT_PATH'].'frontend/view/loader.php?page_name=login&code_error='); 
+redirect('login');
 ?>

@@ -8,7 +8,7 @@
 *   name: string com o nome do usuário logado, null em caso de não ter.
 * }
 */
-require_once 'loadSession.php';
+require_once 'utils/loadSession.php';
 echo json_encode([
 	'logged' => $_SESSION['LOGGED'],
 	'mail' => $_SESSION['USER_MAIL'],

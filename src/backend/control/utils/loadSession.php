@@ -4,7 +4,6 @@
 * Saída: Sem saída.
 * Apenas torna acessível os dados da sessão aos arquivos .php.
 */
-require __DIR__ . '/../../../vendor/autoload.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
