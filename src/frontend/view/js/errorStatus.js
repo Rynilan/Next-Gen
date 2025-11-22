@@ -3,4 +3,12 @@ function putErrorImage() {
 	const CODE_ERROR = (new URLSearchParams(window.location.search)).get('code_error');
 	img.src = absoluteUrl('assets/img/error/' + CODE_ERROR + '.png');
 }
-putErrorImage()
+
+function putErrorMessage() {
+	let message = document.getElementById('errorMessage');
+	const EXTRA = (new URLSearchParams(window.location.search)).get('extra');
+	message.textContent = EXTRA;
+}
+
+putErrorImage();
+putErrorMessage();
