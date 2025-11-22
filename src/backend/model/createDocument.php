@@ -6,7 +6,7 @@ function create_document($local, $name, $json_content) {
 	$local = $_ENV['ROOT_PATH'].'assets/data/'.$local;
 	if (!is_dir($local)) {
 		if (!create_local($local)) {
-			redirect(code_error: 500);
+			redirect(code_error: 500, extra: 'Não foi possível criar o local');
 		}
 	}
 	$file = $local.'/'.$name.'.json';

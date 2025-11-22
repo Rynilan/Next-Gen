@@ -43,8 +43,8 @@ function new_ticket() {
 	}
 	$chat[] = [0, $creation, 'Olá gostaria de falar sobre '.$reason];
 	
-	$status = 'sent';
-	$progress = 'to read';
+	$status = 'open';
+	$progress = 'sent';
 
 	include 'utils/getNextIndexer.php';
 	include '../model/createDocument.php';
@@ -55,6 +55,8 @@ function new_ticket() {
 			'ticket_base',
 			json_encode([
 				"id" => $id,
+				"user" => $user,
+				"client" => $client,
 				"type" => $type,
 				"reason" => $reason,
 				"status" => $status,
