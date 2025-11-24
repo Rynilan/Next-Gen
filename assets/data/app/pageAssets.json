@@ -18,12 +18,12 @@
 	"ticketCreation": {
 		"title": "Criação de chamado",
 		"css": ["ticketCreation"],
-		"js": ["ticketCreation", "putClients"]
+		"js": ["putClients", "ticketCreation"]
 	},
 	"chat": {
-		"title": "Next Gen - Chamado com %empresa - %status",
+		"title": "Next Gen -",
 		"css": ["chat"],
-		"js": ["AIIntegration"]
+		"js": ["loadMessages", "AIIntegration"]
 	},
 	"error": {
 		"404": {

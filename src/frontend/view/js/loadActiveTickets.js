@@ -6,7 +6,7 @@ async function loadActiveTickets() {
 		ticketDiv.innerHTML = `
 			<div class="clientLogoDiv">
 				<img 
-					src='${absoluteUrl("assets/img/icons/" + ticket.client + ".pn")}' 
+					src='${absoluteUrl("assets/img/icons/" + ticket.client + ".png")}' 
 					onerror='this.src = absoluteUrl("assets/img/icons/generic.png")'
 					class='clientLogo'
 				/>

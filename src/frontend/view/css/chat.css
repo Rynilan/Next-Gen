@@ -1,4 +1,4 @@
-.interno {
+.innerChat {
 	border-radius: 50%;
 	background-color: #006400;
 	color: var(--white);
@@ -16,7 +16,7 @@
 	align-items: center;
 	margin: -10px;
 }
-#topo > .interno, #capsula > .interno {
+#topo > .innerChat, #capsula > .innerChat {
 	border: none;
 	background-color: var(--white);
 	color: black;
@@ -37,13 +37,13 @@
 	width: 100%;
 	overflow-y: auto;
 }
-#interacao {
+#messageInput {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 }
-#interacao > .interno {
+#messageInput > .innerChat {
 	cursor: pointer;
 	margin: 0px -10px;
 }
@@ -53,37 +53,62 @@ input {
 	border-radius: 10px;
 	border: 2px solid gray;
 }
-.ia, .humano {
+.ai, .human {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	margin: 10px 0px;
 }
-.humano {
+.human {
 	justify-content: flex-end;
 }
-.ia > p, .humano > p {
+.ai > .message, .human > .message {
 	border-radius: 8px;
 	padding: 8px;
 	max-width: 60%;
 }
-.ia > p {
+.ai > .message {
 	background-color: #888;
 }
-.humano > .interno {
+.human > .innerChat {
 	cursor: default;
 }
-.ia > .interno {
+.ai > .innerChat {
 	background-color: gray;
 	cursor: default;
 }
-.humano > p {
+.human > .message {
 	background-color: #10AA10;
 	order: 1;
 }
-.humano > span {
+.human > span {
 	order: 2;
 }
+.messageTime {
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 12px;
+	margin: 6px auto -2px -2px;
+}
+.fileAttached {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	cursor: pointer;
+	padding: 4px;
+}
+.fileName {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: no-wrap;
+}
+.fileAttached > span {
+	background-color: var(--royal-green);
+	color: default;
+	border: none;
+	pointer-events: none;
+}
+
+
 @media (orientation: portrait) {
 	img {
 		width: 15%;
