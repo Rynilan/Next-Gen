@@ -23,7 +23,7 @@
 	"chat": {
 		"title": "Next Gen -",
 		"css": ["chat"],
-		"js": ["loadMessages", "AIIntegration"]
+		"js": ["loadMessages", "AIIntegration", "sendMessage"]
 	},
 	"error": {
 		"404": {

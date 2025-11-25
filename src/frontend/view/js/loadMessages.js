@@ -5,6 +5,7 @@ async function loadMessages() {
 	ticket.chat.forEach(message => {
 		createMessage(message, ticketId);
 	});
+
 }
 
 function downloadFile(ticket, name) {
@@ -42,6 +43,10 @@ function createMessage(message, ticketId) {
 		</div>
 	`;
 	document.getElementById('chat').appendChild(messageDiv);
+	document.getElementById('chat').scrollTo({
+	  top: document.getElementById('chat').scrollHeight,
+	  behavior: 'smooth'
+	});
 }
 window.createMessage = createMessage;
 loadMessages();
