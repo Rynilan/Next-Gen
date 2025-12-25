@@ -1,96 +1,54 @@
 <?php
-/*
-* Entrada: 
-* 	mail: o email do usuário que está tentando logar.
-* 	password: a senha do usuário que está tentando logar.
-* 	according: valor lógico (0 ou 1) se o usuário concorda com a política de privacidade.
-* Saída: {
-* 	sucess: valor lógico indicando se a operação foi um sucesso.
-* 	redirect: string com link de destino em caso de sucesso, vazio caso contrário.
-* 	error_message: string com saída de erro do código, vazio em caso de sucesso.
-* 	name: string contendo nome do usuário logado, em caso de sucesso, vazio caso contrário.
-* }
-*/
+include '../model/usersHandler.php';
+include '../model/agentsHandler.php';
 require_once 'utils/loadEnv.php';
-$mail = $_GET['mail'];
-$pass = $_GET['password'];
-$okay = $_GET['according'];
 
-function valid_data($mail, $pass, $okay) {
-	$code = 0;
-	if (!preg_match('/^[^\s@]+@[^\s@]+\.[^\s@]+$/', $mail)) {
-		$code = 1;
-	} else if ($okay == 'false') {
-		$code = 2;
-	} else if (!preg_match('/^[A-Za-z0-9]{8,}$/', $pass)) {
-		$code = 3;
+function set_error(&$array, $error_message) {
+	$array['success'] = false;
+	$array['error_message'] = $error_message;
+	$array['redirect'] = null;
+}
+
+function login($login, $password) {
+	$result = [
+		'success' => true,
+		'error_message' => '',
+		'redirect' => $_ENV['ROOT_URL'].'src/frontend/view/loader.php?page_name=main'
+	];
+
+	$stored = [];
+	if (preg_match('/^[\w\.-]+@[\w\.-]+\.\w{2,}$/', $login)) {
+		$stored = get_user($login);
+	} else if (preg_match('/^[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}-?[0-9]{2}$/', $login)) {
+		$stored = get_agent($login);
+	} else {
+		set_error($result, 'Credenciais inválidas.');
 	}
-	return $code;
-}
 
-function format_data(&$mail) {
-	$mail = strtolower(str_replace(['.', '@'], ['-dot-', '-at-'], $mail));
-}
-
-function compare_data($pass, $stored_pass) {
-	return (
-		password_verify($pass, $stored_pass)
-	);
-}
-
-function set_session_and_get_redirect($mail, $name) {
-	require_once 'utils/loadSession.php';
-
-	$_SESSION['USER_MAIL'] = $mail;
-	$_SESSION['USER_NAME'] = $name;
-	$_SESSION['LOGGED'] = true;
-	return $_ENV['ROOT_URL'].'src/frontend/view/loader.php?page_name=main&code_error=';
-}
-
-function login($mail, $pass, $okay) {
-	$data = ["success" => true, "error_message" => '', "name" => '', 'mail' => ''];
-	switch (valid_data($mail, $pass, $okay)) {
-		case 0:
-			break;
-		case 1:
-			$data['success'] = false;
-			$data['error_message'] = 'Email inválido';
-			break;
-		case 2:
-			$data['success'] = false;
-			$data['error_message'] = 'Concorde com os termos de privacidade';
-			break;
-		case 3:
-			$data['success'] = false;
-			$data['error_message'] = 'Credenciais inválidas';
-			break;
+	if (empty($stored)) {
+		set_error($result, 'Usuário inexistente');
 	}
-	$stored_data = [];
-	if ($data['success']) {
-		format_data($mail);
-		include '../model/getUserByMail.php';
-		$stored_data = get_user_by_mail($mail);
-		$data['success'] = $stored_data != null;
-		if (!$data['success']) {
-			$data['error_message'] = 'Usuário inexistente';
-		}
+	if ($result['success'] && !password_verify($password, $stored['pass'])) {
+		set_error($result, 'Credenciais não correspondem.');
 	}
-	if ($data['success']) {
-		if (!compare_data($pass, $stored_data['password'])) {
-			$data['success'] = false;
-			$data['error_message'] = 'Credenciais incorretas';
-		} else {
-			$data['name'] = $stored_data['name'];
-			$data['mail'] = $stored_data['mail'];	
-		}
+
+	if ($result['success']) {
+		include 'utils/loadSession.php';
+		$_SESSION['USER_CREDENTIAL'] = $login;
+		$_SESSION['USER_NAME'] = (isset($stored['name']))? $stored['name']: $stored['real_name'];
+		$_SESSION['LOGGED'] = true;
 	}
-	return $data;
+
+	return $result;
 }
 
-$result = login($mail, $pass, $okay);
-if ($result['success']) {
-	$result['redirect'] = set_session_and_get_redirect($result['mail'], $result['name']);
+$data = [];
+if ($_GET['according'] == 'true') {
+	$mail = $_GET['login'];
+	$password = $_GET['password'];
+	$data = login($mail, $password);
+} else {
+	$data = ['success' => false, 'error_message' => ''];
 }
-echo json_encode($result);
-
+echo json_encode($data, JSON_PRETTY_PRINT);
 ?>

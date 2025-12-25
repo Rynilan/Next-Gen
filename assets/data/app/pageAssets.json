@@ -12,7 +12,7 @@
 	"main": {
 		"title": "NextGen",
 		"css": ["main"],
-		"js": ["navigation", "loadActiveTickets"]
+		"js": ["navigation", "loadOpenTickets"]
 
 	},
 	"ticketCreation": {
@@ -23,9 +23,19 @@
 	"chat": {
 		"title": "Next Gen -",
 		"css": ["chat"],
-		"js": ["loadMessages", "AIIntegration", "sendMessage"]
+		"js": ["loadMessages", "sendMessage"]
+	},
+	"home": {
+		"title": "Bem vindo(a)",
+		"css": ["home"],
+		"js": ["homeSetup"]
 	},
 	"error": {
+		"400": {
+			"css": ["error"],
+			"js": ["errorStatus"],
+			"title": "400 Bad Request"
+		},
 		"404": {
 			"css": ["error"],
 			"js": ["errorStatus"],
