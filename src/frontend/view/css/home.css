@@ -1,0 +1,54 @@
+main {
+	width: 80%;
+}
+
+#imageAndText {
+	margin-top: 20px;
+}
+
+#imageAndText, #textDiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#enterpriseImage {
+	display: block;
+	margin: 0 auto;
+	width: 80%;
+	border-radius: 20px;
+}
+
+#textDiv {
+	flex-direction: column;
+	font-size: 24px;
+}
+
+#loginButton, #registerButton {
+	width: 60%;
+	color: var(--royal-green);
+	background-color: var(--royal-gold);
+	border: 3px solid var(--royal-green);
+	border-radius: 8px;
+	margin: 10px;
+	font-size: 24px;
+	font-weight: bold;
+	padding: 8px;
+}
+
+#loginButton:hover, #registerButton:hover {
+	transform: scale(1.1);
+	transition: 0.4s;
+}
+
+@media (orientation: portrait) {
+	#imageAndText {
+		flex-direction: column
+	}
+	#imageDiv {
+		width: 100%;
+	}
+	#textDiv {
+		padding: 20px 0;
+	}
+}
