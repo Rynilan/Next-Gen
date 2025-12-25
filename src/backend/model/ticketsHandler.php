@@ -1,5 +1,6 @@
 <?php
 require_once 'database/crud.php';
+require_once 'agentsHandler.php';
 
 /** Fetch tickets from the database with optional status filtering.
 * @param array<string,string|int> $args Associative array of column => value conditions.
@@ -10,7 +11,8 @@ function ticket_fetch($args, $only_open = null) {
     if (!is_null($only_open)) {
         $args['status'] = ($only_open) ? 'open' : 'closed';
     }
-    return select('tickets', $args);
+	$ticket = select('tickets', $args);
+	return $ticket;
 }
 
 /** Fetch chat messages associated with a given ticket.
@@ -98,7 +100,7 @@ function close_ticket($ticket_id, $finish) {
 	if (isset($ticket['closed']) && !is_null($ticket['closed'])) return 0;
 	return update_ticket($ticket_id, [
 		'status' => 'closed',
-		'closed' => new DateTime('now', new DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+		'closed' => (new DateTime('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s'),
 		'finished' => $finish
 	]);
 }

@@ -1,9 +1,9 @@
 <div>
 	<img id='loginLogo' alt="logo">
-	<p class='data'>Email:</p>
-	<input id='email' placeholder='examplo@email.com' type="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"/>
+	<p class='data'>Login:</p>
+	<input id='login' placeholder='Email ou CNPJ' type="text" required/>
 	<p class='data'>Senha:</p>
-	<input id='password' type="password" required pattern="^[A-Za-z0-9]{8,}$" placeholder='senha123'/>
+	<input id='password' type="password" required pattern="^[A-Za-z0-9]{8,}$" placeholder='senha123' />
 	<p id='register'>Não tem uma conta? <a href='#'>Cadastre-se</a></p>
 	<p id='privacyPolice'><input id='check' type="checkbox"/> Eu li e concordo com os termos de <a href="#">política de privacidade</a>.</p>
 	<p id='centerizer'><button onclick="login(event)">Entrar</button></p>

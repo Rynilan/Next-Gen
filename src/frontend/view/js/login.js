@@ -3,12 +3,12 @@ function putLogo() {
 }
 
 async function login() {
-	let mail = document.getElementById('email').value;
+	let mail = document.getElementById('login').value;
 	let password = document.getElementById('password').value;
 	let according = document.getElementById('check').checked;
 
 	let result = await (await fetch(absoluteUrl(
-		'src/backend/control/login.php?mail=' + encodeURIComponent(mail) + '&password=' + encodeURIComponent(password) + '&according=' + encodeURIComponent(according)))).json();
+		'src/backend/control/login.php?login=' + encodeURIComponent(mail) + '&password=' + encodeURIComponent(password) + '&according=' + encodeURIComponent(according)))).json();
 
 	if (result.success) {
 		window.location.href = result.redirect;
