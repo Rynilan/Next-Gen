@@ -19,10 +19,11 @@ async function verifyAcess() {
 		document.querySelectorAll('.logged').forEach((element) => {
 			element.style.display = 'none';
 		});
-		homeLink = 'login';
+		homeLink = 'home';
 	} else {
 		homeLink = 'main';
 	}
+	document.getElementById('accountInfo').innerHTML = "<span class='material-symbols-outlined'>account_circle</span>" + data.name;
 	document.querySelectorAll('.homeRedirect').forEach(home => home.addEventListener('click', () => {
 		window.location.href = absoluteUrl('src/frontend/view/loader.php?page_name=' + homeLink + '&code_error=');
 	}));
@@ -56,8 +57,8 @@ async function putContent() {
 	data.default.css.forEach(stylesheet => page_data.css.push(stylesheet));
 	data.default.js.forEach(script => page_data.js.push(script));
 	document.getElementById('title').innerText = page_data.title;
-	putCss(page_data.css);
-	putJs(page_data.js);
+	putCss(page_data.css.reverse());
+	putJs(page_data.js.reverse());
 }
 
 async function putDefaultFunctions() {
@@ -77,22 +78,11 @@ async function putDefaultFunctions() {
 			MENU.style.display = 'none';
 		}
 	});
-	// Função para trocar de tema.
-	/*document.getElementById('toggleTheme').addEventListener('click', () => {
-		const THEME = document.getElementById('theme')
-		if (THEME.textContent == 'light_mode') {
-			localStorage.setItem('theme', 'light');
-			THEME.textContent = 'dark_mode';
-		} else {
-			localStorage.setItem('theme', 'dark');
-			THEME.textContent = 'light_mode';
-		}
-		document.body.classList.toggle('light-theme');
-	});*/
 	// Função para sair.
-	document.getElementById('exit').addEventListener('click', () => {
+	document.getElementById('exit').addEventListener('click', async () => {
 		if (confirm('Tem certeza que deseja sair?')) {
 			alert('Foi bom ter você conosco.');
+			await fetch(absoluteUrl('src/backend/control/exit.php'));
 			window.location.href = absoluteUrl('index.php');
 		}
 	});
