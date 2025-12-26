@@ -18,6 +18,14 @@ coverage/*
 
 # Arquivos que representam dados
 assets/data/users/*
-assets/data/clients/*
-assets/data/tickets/*
-assets/img/icons/*
+assets/data/ticket_files/*
+assets/img/icons/0*
+assets/img/icons/1*
+assets/img/icons/2*
+assets/img/icons/3*
+assets/img/icons/4*
+assets/img/icons/5*
+assets/img/icons/6*
+assets/img/icons/7*
+assets/img/icons/8*
+assets/img/icons/9*
