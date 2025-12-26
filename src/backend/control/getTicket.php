@@ -1,17 +1,26 @@
 <?php
 
+include 'utils/showErrors.php';
 include 'utils/logged.php';
-include 'utils/loadEnv.php';
-include 'utils/formatTicket.php';
-include '../model/getDocuments.php';
+include 'utils/getAcess.php';
+require_once '../model/ticketsHandler.php';
+require_once '../model/usersHandler.php';
+require_once '../model/agentsHandler.php';
 
-function get_ticket() {
-	$ticket = $_GET['ticket'];
-	$ticket = get_document($_ENV['ROOT_PATH'].'assets/data/tickets/'.urldecode($ticket).'/ticket_base.json');
-	format_ticket($ticket);
+function ticket($ticket_id) {
+	$ticket = get_ticket($ticket_id);
+	$ticket['chat'] = chat_fetch($ticket_id);
+	$ticket['logged'] = get_acess();
+	$ticket['logged'] = ($ticket['logged'] == 'agent')? 'support': $ticket['logged'];
+	if ($ticket['logged'] === 'user') {
+		$name = get_agent($ticket['agent_cnpj'])['real_name'];
+	} else {
+		$name = get_user($ticket['user_mail'])['name'];
+	}
+	$ticket['counterpart_name'] = $name;
 	return $ticket;
 }
 
-$data = get_ticket();
-echo json_encode($data);
+echo json_encode(ticket($_GET['ticket']));
+
 ?>

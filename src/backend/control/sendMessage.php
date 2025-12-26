@@ -1,21 +1,25 @@
 <?php
-
 include 'utils/showErrors.php';
-function send_message() {
-	include 'utils/getDateNow.php';
-	include '../model/appendMessage.php';
-	$result = ['success' => true, 'error_message' => ''];
+include 'utils/logged.php';
+include 'utils/getAcess.php';
+include '../model/ticketsHandler.php';
 
-	$message = urldecode($_GET['message']);
-	$ticket_id = strtolower(ucwords($_GET['ticket_id']));
-	$human = (int) $_GET['human'];
-	$time = get_date_now();
-	append_message($human, $message, $time, $ticket_id.'/ticket_base.json');
-	$result['message'] = [
-		$human, $time, $message	
-	];
+function message($message, $ticket_id) {
+	if (str_starts_with($message, '<file name=')) return ['success' => false, 'error' => 'Mensagem inválida.'];
+
+	$author = get_acess();
+	$author = ($author == 'user')? $author: 'support';
+	$result = ['success' => insert_chat_message($ticket_id, $author, $message) > 0];
+	if (!$result['success']) {
+		$result['error'] = error_get_last();
+	} else {
+		$result['message'] = array_slice(chat_fetch($ticket_id), -1)[0];
+		$result['logged'] = get_acess();
+		$result['logged'] = ($result['logged'] == 'agent')? 'support': $result['logged'];
+	}
 	return $result;
 }
 
-echo json_encode(send_message());
+echo json_encode(message($_GET['message'], $_GET['ticket_id']));
+
 ?>

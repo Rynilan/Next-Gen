@@ -53,16 +53,19 @@ input {
 	border-radius: 10px;
 	border: 2px solid gray;
 }
-.ai, .human {
+.ai, .user, .support {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	margin: 10px 0px;
 }
-.human {
+.messageFromLogged {
 	justify-content: flex-end;
 }
-.ai > .message, .human > .message {
+.messageFromLogged > span {
+	order: 2;
+}
+.ai > .message, .user > .message, .support > .message {
 	border-radius: 8px;
 	padding: 8px;
 	max-width: 60%;
@@ -70,19 +73,19 @@ input {
 .ai > .message {
 	background-color: #888;
 }
-.human > .innerChat {
+.support > .message {
+	background-color: #007bff;
+}
+.user > .innerChat, .support > .innerChat {
 	cursor: default;
 }
 .ai > .innerChat {
 	background-color: gray;
 	cursor: default;
 }
-.human > .message {
+.user > .message {
 	background-color: #10AA10;
 	order: 1;
-}
-.human > span {
-	order: 2;
 }
 .messageTime {
 	color: rgba(0, 0, 0, 0.6);
@@ -103,9 +106,26 @@ input {
 }
 .fileAttached > span {
 	background-color: var(--royal-green);
-	color: default;
 	border: none;
 	pointer-events: none;
+}
+#closeTicket {
+	display: inline-block;
+	background-color: #d00;
+	color: #000;
+	padding: 10px;
+	margin: 8px;
+	border-radius: 12px;
+	font-weight: bold;
+	cursor: pointer;
+}
+#closeTicket:hover {
+	transform: scale(1.15) translateY(-10px);
+	transition: 0.6s;
+	color: #fff;
+}
+.centerizer {
+	text-align: center;
 }
 
 
