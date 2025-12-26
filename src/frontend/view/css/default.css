@@ -95,6 +95,7 @@ header > img {
 	border: 2px solid var(--royal-gold);
 	padding: 10px;
 	background-color: var(--royal-green);
+	z-index: 2
 }
 .menuOption {
 	padding: 2px;

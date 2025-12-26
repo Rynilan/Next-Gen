@@ -19,8 +19,8 @@ p {
 	color: var(--royal-green);
 }
 #errorImage {
-	width: 400px;
-	height: 400px;
+	width: 80%;
+	height: auto;
 	display: block;
 	margin: 10px auto;
 	border-radius: 45%;

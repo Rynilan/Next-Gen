@@ -2,6 +2,7 @@
 include '../model/usersHandler.php';
 include '../model/agentsHandler.php';
 require_once 'utils/loadEnv.php';
+require_once 'utils/validate.php';
 
 function set_error(&$array, $error_message) {
 	$array['success'] = false;
@@ -17,9 +18,9 @@ function login($login, $password) {
 	];
 
 	$stored = [];
-	if (preg_match('/^[\w\.-]+@[\w\.-]+\.\w{2,}$/', $login)) {
+	if (validate_mail($login)) {
 		$stored = get_user($login);
-	} else if (preg_match('/^[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}-?[0-9]{2}$/', $login)) {
+	} else if (validate_cnpj($login)) {
 		$stored = get_agent($login);
 	} else {
 		set_error($result, 'Credenciais inválidas.');

@@ -36,7 +36,7 @@ async function loadOpenTickets() {
 		ticketDiv.addEventListener('click', () => {
 			window.location.href = absoluteUrl(
 				'src/frontend/view/loader.php?page_name=chat&extra=' +
-				encodeURIComponent(ticket.user + '/' + ticket.client + '/' + ticket.id)
+				encodeURIComponent(ticket.id)
 			);
 		})
 		document.getElementById('tickets').appendChild(ticketDiv);
