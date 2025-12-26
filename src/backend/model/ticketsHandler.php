@@ -101,7 +101,7 @@ function close_ticket($ticket_id, $finish) {
 	return update_ticket($ticket_id, [
 		'status' => 'closed',
 		'closed' => (new DateTime('now', new DateTimeZone('UTC')))->format('Y-m-d H:i:s'),
-		'finished' => $finish
+		'finish' => $finish
 	]);
 }
 

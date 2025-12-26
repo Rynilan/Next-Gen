@@ -102,13 +102,14 @@ function update(string $table_name, array $updated_data, string $id_name, string
 	foreach ($updated_data as $column => $value) {
 		$param['values'][] = $value;
 		$param['placeholder'] .= (is_string($value))? 's': 'i';
-		$update_string .= $column.' = ? ';	
+		$update_string .= $column.' = ?, ';	
 	}
-	$param['placeholder'] = (is_string($id_value))? 's': 'i';
+	$param['placeholder'] .= (is_string($id_value))? 's': 'i';
 	$param['values'][] = $id_value;
+	$update_string = substr_replace($update_string, ' ', strrpos($update_string, ', '), strlen($update_string));
 
 	return execute(
-		'update table '.$table_name.' set '.$update_string.'where '.$id_name.comparison($id_value).'?;',
+		'update '.$table_name.' set '.$update_string.'where '.$id_name.comparison($id_value).'?;',
 		$param
 	);
 }

@@ -18,12 +18,12 @@
 	"ticketCreation": {
 		"title": "Criação de chamado",
 		"css": ["ticketCreation"],
-		"js": ["putClients", "ticketCreation"]
+		"js": ["putAgents", "ticketCreation"]
 	},
 	"chat": {
 		"title": "Next Gen -",
 		"css": ["chat"],
-		"js": ["loadMessages", "sendMessage"]
+		"js": ["loadMessages", "sendMessage", "closeTicket"]
 	},
 	"home": {
 		"title": "Bem vindo(a)",
