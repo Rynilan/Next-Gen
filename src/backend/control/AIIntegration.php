@@ -20,9 +20,7 @@ function call_ai($ticket_id) {
 						Tendo o seguinte chamado: ".json_encode($ticket)." 
 						da empresa ".$agent." continue a conversa com uma resposta 
 						adequada, e se limite SOMENTE a responder a mensagem como IA de suporte
-						e se limite a 200 caracteres no máximo, mas tente usar o mínimo. Em caso
-						de não haver possibilidade de resolução por você encaminhe a solicitação 
-						ao suporte humano.
+						e se limite a 200 caracteres no máximo, mas tente usar o mínimo. 
 						"
 					]
 				]
