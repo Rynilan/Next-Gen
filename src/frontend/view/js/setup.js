@@ -101,7 +101,7 @@ async function putContent() {
 
 	let data = await (await fetch(absoluteUrl('assets/data/app/pageAssets.json'))).json();
 	let page_data = data[PAGE_NAME];
-	if (CODE_ERROR != undefined && CODE_ERROR != 'null') {
+	if (['400', '401', '403', '404', '500'].includes(CODE_ERROR)) {
 		page_data = page_data[CODE_ERROR];
 	}
 	data.default.css.forEach(stylesheet => page_data.css.push(stylesheet));

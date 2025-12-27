@@ -1,54 +1,204 @@
 main {
-	width: 80%;
+  width: 80%;
 }
 
-#imageAndText {
-	margin-top: 20px;
+ul {
+  color: #000;
 }
 
-#imageAndText, #textDiv {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+#title,
+#line {
+  display: none;
 }
 
-#enterpriseImage {
-	display: block;
-	margin: 0 auto;
-	width: 80%;
-	border-radius: 20px;
+/* Call-to-action buttons */
+.cta {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.cta.primary {
+  background-color: var(--royal-gold);
+  color: var(--royal-green);
+}
+.cta.secondary {
+  background-color: var(--royal-green);
+  color: var(--white);
+  border: 2px solid var(--royal-gold);
+}
+.cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-#textDiv {
-	flex-direction: column;
-	font-size: 24px;
+/* Hero */
+#hero {
+  background: linear-gradient(135deg, #e0e0e0, #ffffff);
+}
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--royal-green);
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+#heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+#heroImage img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.5s;
+}
+#heroImage img:hover {
+  transform: scale(1.05);
 }
 
-#loginButton, #registerButton {
-	width: 60%;
-	color: var(--royal-green);
-	background-color: var(--royal-gold);
-	border: 3px solid var(--royal-green);
-	border-radius: 8px;
-	margin: 10px;
-	font-size: 24px;
-	font-weight: bold;
-	padding: 8px;
+/* Divider image */
+#dividerImage {
+  background: linear-gradient(135deg, #f0f0f0, #ffffff);
+  padding: 1rem;
+  border-radius: 12px;
+}
+#dividerImage img {
+  width: 100%;
+  margin: 2rem 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
 
-#loginButton:hover, #registerButton:hover {
-	transform: scale(1.1);
-	transition: 0.4s;
+/* Value proposition section */
+#value {
+  background: linear-gradient(135deg, #dcdcdc, #ffffff);
 }
 
-@media (orientation: portrait) {
-	#imageAndText {
-		flex-direction: column
-	}
-	#imageDiv {
-		width: 100%;
-	}
-	#textDiv {
-		padding: 20px 0;
-	}
+/* Gains section */
+#gains {
+  background: linear-gradient(135deg, #e8e8e8, #ffffff);
 }
+
+/* Pain points section */
+#painPoints {
+  background: linear-gradient(135deg, #f2f2f2, #ffffff);
+}
+
+/* Section styling */
+section {
+  padding: 3rem 2rem;
+  margin: 2rem 0;
+  border-radius: 12px;
+}
+
+/* Section titles */
+#value h2,
+#gains h2,
+#painPoints h2 {
+  font-size: 2rem;
+  color: var(--royal-gold);
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Gains grid */
+.gainGrid {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.gain {
+  flex: 1 1 250px;
+  margin: 1rem 0;
+  background: linear-gradient(135deg, #ffffff, #f9f9f9);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gain:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+.gain img {
+  max-width: 150px;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.4s;
+}
+.gain img:hover {
+  transform: scale(1.1) rotate(2deg);
+}
+.gain h3 {
+  font-size: 1.5rem;
+  color: var(--royal-green);
+  margin-bottom: 0.5rem;
+}
+.gain p {
+  font-size: 1rem;
+  color: #888;
+}
+
+/* General responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hero responsive */
+#heroContent {
+  flex-wrap: wrap; /* allows stacking on small screens */
+}
+#heroText {
+  flex: 1 1 300px;
+  text-align: center;
+}
+.heroTitle {
+  font-size: 2.5rem;
+}
+@media (max-width: 768px) {
+  #heroContent {
+    flex-direction: column;
+    text-align: center;
+  }
+  .heroTitle {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* CTA buttons responsive */
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta {
+  flex: 1 1 auto;
+  min-width: 140px;
+}
+
+/* Section titles responsive */
+section h2 {
+  font-size: 2rem;
+}
+@media (max-width: 768px) {
+  section h2 {
+    font-size: 1.6rem;
+  }
+}
+
