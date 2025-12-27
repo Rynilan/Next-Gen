@@ -6,10 +6,12 @@ include 'utils/getAcess.php';
 include 'utils/loadEnv.php';
 require_once '../model/ticketsHandler.php';
 require_once '../model/agentsHandler.php';
+require_once '../model/usersHandler.php';
 
 function call_ai($ticket_id) {
 	$ticket = get_ticket($ticket_id);
 	$agent = get_agent($ticket['agent_cnpj'])['real_name'];
+	$user = get_user($ticket['user_mail'])['name'];
 	$apiKey = $_ENV['AI_KEY'];
 	$url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 	$data = [
@@ -18,7 +20,7 @@ function call_ai($ticket_id) {
 				"parts" => [
 					["text" => "
 						Tendo o seguinte chamado: ".json_encode($ticket)." 
-						da empresa ".$agent." continue a conversa com uma resposta 
+						da empresa ".$agent." e usuário ".$user." continue a conversa com uma resposta 
 						adequada, e se limite SOMENTE a responder a mensagem como IA de suporte
 						e se limite a 200 caracteres no máximo, mas tente usar o mínimo. 
 						"

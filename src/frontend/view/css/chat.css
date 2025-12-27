@@ -127,6 +127,18 @@ input {
 .centerizer {
 	text-align: center;
 }
+#closedInfo {
+	display: none;
+	border: 2px solid #888;
+	border-radius: 12px;
+	background-color: #bbb;
+	padding: 4px;
+}
+#closedInfoParagraph {
+	text-align: center;
+	font-size: 16px;
+	background-color: #bbb;
+}
 
 
 @media (orientation: portrait) {

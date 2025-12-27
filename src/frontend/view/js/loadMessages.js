@@ -6,6 +6,13 @@ async function loadMessages() {
 		createMessage(message, ticketId, ticket.logged);
 	});
 
+	if (ticket.status == 'closed') {
+		document.getElementById('messageInput').style.display = 'none';
+		document.getElementById('closeTicket').style.display = 'none';
+		document.getElementById('closedInfo').style.display = 'block';
+		document.getElementById('closedInfoParagraph').innerHTML = `Chamado fechado em:<br/><strong>${ticket.closed}</strong><br/>Sua situação final foi:<br/><strong>${ticket.finish}</strong>`;
+
+	}
 }
 
 async function downloadFile(ticket, name) {
