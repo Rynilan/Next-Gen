@@ -1,3 +1,4 @@
+// Some useful functions to all js.
 const ROOT_URL = (
 	await (
 		await fetch('../../backend/control/getRootUrl.php')
@@ -9,10 +10,61 @@ export function absoluteUrl(path) {
 }
 window.absoluteUrl = absoluteUrl;
 
+export async function controlFetch(fileAndArgs) {
+	try {
+		let response = await fetch(absoluteUrl('src/backend/control/' + fileAndArgs));
+		if (response.ok) {
+			return await response.json();
+		} else {
+			alert('Wait!');
+			//redirect('error', response.status);
+			return null;
+		}
+	} catch (error) {
+		alert('Alguma coisa deu errado ' + error);
+		console.log(error);
+		//redirect('error', 500, error);
+	}
+}
+window.controlFetch = controlFetch;
+
+export async function redirect(page_name, code_error = null, extra = null) {
+	window.location.href = absoluteUrl(
+		'src/frontend/view/loader.php?page_name=' + page_name +
+		'&code_error=' + code_error + '&extra=' + extra
+	);
+}
+window.redirect = redirect;
+
+export function listenClick(elementId, callback) {
+	document.getElementById(elementId).addEventListener('click', () => callback());
+}
+window.listenClick = listenClick;
+
+export function listenClickElement(element, callback) {
+	element.addEventListener('click', () => callback());
+}
+window.listenClickElement = listenClickElement;
+
+export function getUrlParam(paramName) {
+	return (new URLSearchParams(window.location.search)).get(paramName);
+}
+window.getUrlParam = getUrlParam;
+
+export function isAgent(credential) {
+	return /^\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}$/.test(credential);
+}
+window.isAgent = isAgent;
+
+export function isUser(credential) {
+	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(credential);
+}
+window.isUser = isUser;
+
 // Verificação do acesso.
 async function verifyAcess() {
-	let response = await fetch(absoluteUrl('src/backend/control/getLogged.php'));
-	let data = await response.json();
+	let data = await controlFetch('getLogged.php');
+	window.logged = data;
 	let homeLink;
 
 	if (!data.logged) {
@@ -24,9 +76,7 @@ async function verifyAcess() {
 		homeLink = 'main';
 	}
 	document.getElementById('accountInfo').innerHTML = "<span class='material-symbols-outlined'>account_circle</span>" + data.name;
-	document.querySelectorAll('.homeRedirect').forEach(home => home.addEventListener('click', () => {
-		window.location.href = absoluteUrl('src/frontend/view/loader.php?page_name=' + homeLink + '&code_error=');
-	}));
+	document.querySelectorAll('.homeRedirect').forEach(home => listenClickElement(home, () => {redirect(homeLink);}));
 }
 
 // Adição do conteúdo personalizado às páginas.
@@ -46,12 +96,12 @@ function putJs(scripts) {
 	})
 }
 async function putContent() {
-	const PAGE_NAME = (new URLSearchParams(window.location.search)).get('page_name');
-	const CODE_ERROR = (new URLSearchParams(window.location.search)).get('code_error');
+	const PAGE_NAME = getUrlParam('page_name');
+	const CODE_ERROR = getUrlParam('code_error');
 
 	let data = await (await fetch(absoluteUrl('assets/data/app/pageAssets.json'))).json();
 	let page_data = data[PAGE_NAME];
-	if (CODE_ERROR) {
+	if (CODE_ERROR != undefined && CODE_ERROR != 'null') {
 		page_data = page_data[CODE_ERROR];
 	}
 	data.default.css.forEach(stylesheet => page_data.css.push(stylesheet));
@@ -63,7 +113,7 @@ async function putContent() {
 
 async function putDefaultFunctions() {
 	// Função do botão de conta (mostrar o menu).
-	document.getElementById('menuButton').addEventListener('click', () => {
+	listenClick('menuButton', () => {
 		const MENU = document.getElementById('menu');
 		if (MENU.style.display === 'none') {
 			MENU.style.display = 'block';
@@ -79,25 +129,19 @@ async function putDefaultFunctions() {
 		}
 	});
 	// Função para sair.
-	document.getElementById('exit').addEventListener('click', async () => {
+	listenClick('exit', async () => {
 		if (confirm('Tem certeza que deseja sair?')) {
 			alert('Foi bom ter você conosco.');
-			await fetch(absoluteUrl('src/backend/control/exit.php'));
-			window.location.href = absoluteUrl('index.php');
+			await controlFetch('exit.php');
+			redirect('home');
 		}
 	});
 	// Função para ir para o sobre.
-	document.getElementById('about').addEventListener('click', () => {
-		window.location.href = absoluteUrl('frontend/view/loader.php?page_name=about&code_error=');
-	});
+	listenClick('about', () => {redirect('about');});
 	// Função para gerir alunos.
-	document.getElementById('allTickets').addEventListener('click', () => {
-		window.location.href = absoluteUrl('frontend/view/loader.php?page_name=listTickets&code_error=');
-	});
+	listenClick('allTickets', () => {redirect('listTickets');});
 	// Função para gerir materiais.
-	document.getElementById('accountInfo').addEventListener('click', () => {
-		window.location.href = absoluteUrl('frontend/view/loader.php?page_name=accountInfo&code_error=');
-	});
+	listenClick('accountInfo', () => {redirect('account_info');});
 }
 
 async function putData() {

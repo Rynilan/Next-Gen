@@ -20,8 +20,8 @@ async function createTicket() {
 
 	alert(result.message);
 	if (result.success) {
-		window.location.href = absoluteUrl('src/frontend/view/loader.php?page_name=chat&extra=' + result.ticket_id);
+		redirect('chat', null, result.ticket_id);
 	}
 }
 
-document.getElementById('createTicket').addEventListener('click', () => {createTicket();});
+listenClick('createTicket', () => {createTicket();});

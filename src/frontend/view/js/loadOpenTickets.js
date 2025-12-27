@@ -1,18 +1,15 @@
-async function setAcess() {
-	let logged = await (await fetch(absoluteUrl('src/backend/control/getLogged.php'))).json();
-	if (!logged.mail.includes('-at-nextgen-dot-admin')) {
-		
-	}
-}
-
 async function loadOpenTickets() {
-
-	let response = await fetch(absoluteUrl('src/backend/control/getOpenTickets.php'));
-	if (response.status != 200) {
-		alert("Algum erro aconteceu.");
+	let activeTickets = await controlFetch('getOpenTickets.php');
+	if (activeTickets.length == 0) {
+		let theresNoTickets = document.createElement('div');
+		theresNoTickets.className = 'noTickets';
+		theresNoTickets.innerHTML = `
+			<p>
+				Não há chamados abertos (ainda) ${isUser(window.logged.credential)? "Abra seu primeiro chamado": ""}
+			</p>
+		`;
+		document.getElementById('tickets').appendChild(theresNoTickets);
 	}
-	let activeTickets = await (response).json();
-	let logged = await (await fetch(absoluteUrl('src/backend/control/getLogged.php'))).json();
 	activeTickets.forEach(ticket => {
 		let ticketDiv = document.createElement('div');
 		ticketDiv.className = 'ticket  ' + ticket.status;
@@ -20,7 +17,7 @@ async function loadOpenTickets() {
 			<div class="imageLogoDiv">
 				<img 
 					src='${absoluteUrl("assets/img/" + (
-						(logged.credential == ticket.user_mail)?
+						(window.logged.credential == ticket.user_mail)?
 						"icons/" + ticket.agent_cnpj: "user"
 					) + ".png")}' 
 					onerror='this.src = absoluteUrl("assets/img/icons/generic.png")'
@@ -33,12 +30,7 @@ async function loadOpenTickets() {
 			</div>
 		`;
 
-		ticketDiv.addEventListener('click', () => {
-			window.location.href = absoluteUrl(
-				'src/frontend/view/loader.php?page_name=chat&extra=' +
-				encodeURIComponent(ticket.id)
-			);
-		})
+		listenClickElement(ticketDiv, () => {redirect('chat', null, ticket.id);});
 		document.getElementById('tickets').appendChild(ticketDiv);
 	});
 }

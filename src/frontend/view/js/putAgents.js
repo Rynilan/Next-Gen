@@ -1,5 +1,5 @@
 async function putAgents() {
-	let agents = await (await fetch(absoluteUrl('src/backend/control/getAllAgents.php'))).json();
+	let agents = await controlFetch('getAllAgents.php');
 	const clientsSelect = document.getElementById('agent');
 	agents.forEach(agent => {
 		let option = document.createElement('option');

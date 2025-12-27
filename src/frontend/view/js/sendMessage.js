@@ -1,12 +1,10 @@
 async function AIResponse() {
-	let ticketId = (new URLSearchParams(window.location.search)).get('extra');
-	let result = await (await fetch(absoluteUrl("src/backend/control/AIIntegration.php?ticket_id=" + ticketId))).json();
+	let ticketId = getUrlParam('extra');
+	let result = await controlFetch("AIIntegration.php?ticket_id=" + ticketId);
 	if (result.success) {
 		createMessage(result.message, ticketId, result.logged);
 	} else {
-		if (result.message != 'atum com maionese') {
-			alert(result.error_message);
-		}
+		alert(result.error_message);
 	}
 }
 
@@ -16,8 +14,8 @@ async function sendMessage() {
 		return;
 	}
 
-	let ticketId = (new URLSearchParams(window.location.search)).get('extra');
-	let result = await (await fetch(absoluteUrl('src/backend/control/sendMessage.php?message=' + message + '&ticket_id=' + ticketId))).json();
+	let ticketId = getUrlParam('extra');
+	let result = await controlFetch('sendMessage.php?message=' + message + '&ticket_id=' + ticketId);
 
 	if (result.success) {
 		createMessage(result.message, ticketId, result.logged);
@@ -30,4 +28,4 @@ async function sendMessage() {
 	}
 }
 
-document.getElementById('send').addEventListener('click', () => {sendMessage();});
+listenClick('send', () => {sendMessage();});

@@ -1,5 +1,9 @@
-async function goTo(page_name) {
-	window.location.href = absoluteUrl('src/frontend/view/loader.php?page_name=' + encodeURIComponent(page_name));
+function navigationToCreateTicket() {
+	if (isUser(window.logged.credential)) {
+		listenClick('goToCreateTickets', () => {redirect('ticketCreation');});
+	} else {
+		document.getElementById('goToCreateTickets').style.display = 'none';
+	}
 }
 
-document.getElementById('goToCreateTickets').addEventListener('click', () => {goTo('ticketCreation');})
+navigationToCreateTicket();

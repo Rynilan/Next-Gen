@@ -1,6 +1,6 @@
 async function loadMessages() {
-	let ticketId = (new URLSearchParams(window.location.search)).get('extra');
-	let ticket = await (await fetch(absoluteUrl('src/backend/control/getTicket.php?ticket=' + ticketId))).json();
+	let ticketId = getUrlParam('extra');
+	let ticket = await controlFetch('getTicket.php?ticket=' + ticketId);
 	document.getElementById('title').textContent += ' ' + ticket.counterpart_name;
 	ticket.chat.forEach(message => {
 		createMessage(message, ticketId, ticket.logged);
