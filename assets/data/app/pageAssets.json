@@ -30,6 +30,11 @@
 		"css": ["home"],
 		"js": ["homeSetup"]
 	},
+	"register": {
+		"title": "Cadastro",
+		"css": ["login"],
+		"js": ["register"]
+	},
 	"error": {
 		"400": {
 			"css": ["error"],

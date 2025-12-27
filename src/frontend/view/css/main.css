@@ -57,3 +57,16 @@ button:hover {
 .closed {
 	border-left: 5px solid var(--royal-green);
 }
+
+.noTickets {
+	background-color: #ddd;
+	padding: 20px;
+	border-radius: 20px;
+	border: 2px solid #999;
+}
+.noTickets > p {
+	text-align: center;
+	font-weight: bolder;
+	font-size: 18px;
+	color: #888;
+}

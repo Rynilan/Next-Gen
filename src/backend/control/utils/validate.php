@@ -14,7 +14,7 @@ function validate_cnpj(string $cnpj_candidate): bool {
 * @return bool the value of the validation (ok or not ok).
 */
 function validate_mail(string $mail_candidate): bool {
-	return preg_match('/^[\w\.-]+@[\w\.-]+\.\w{2,}$/', $mail_candidate);
+	return preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $mail_candidate);
 }
 
 ?>

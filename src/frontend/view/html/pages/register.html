@@ -1,10 +1,11 @@
 <div>
-	<img id='loginLogo' alt="logo">
+	<p class='data'>Nome</p>
+	<input id='name' placeholder='joao silva dos santos' type='text' required/>
 	<p class='data'>Login:</p>
-	<input id='login' placeholder='Email ou CNPJ' type="text" required/>
+	<input id='login' placeholder='Email ou CNPJ' type="text" required title='Email para usuário, CNPJ para empresa'/>
 	<p class='data'>Senha:</p>
 	<input id='password' type="password" required pattern="^[A-Za-z0-9]{8,}$" placeholder='senha123' />
-	<p id='register'>Não tem uma conta? <a href='#' id='registerLink'>Cadastre-se</a></p>
+	<p id='register'>Já tem uma conta? <a href='#' id='loginLink'>Entre</a></p>
 	<p id='privacyPolice'><input id='check' type="checkbox"/> Eu li e concordo com os termos de <a target='_blank' href="https://www.microsoft.com/en-us/privacy/privacystatement">política de privacidade</a>.</p>
-	<p id='centerizer'><button onclick="login(event)">Entrar</button></p>
+	<p id='centerizer'><button onclick="register(event)">Cadastrar-se</button></p>
 </div>

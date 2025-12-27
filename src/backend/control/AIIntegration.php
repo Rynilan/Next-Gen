@@ -39,7 +39,7 @@ function call_ai($ticket_id) {
 
 	$response = curl_exec($ch);
 
-	$result = ["sucess" => false];
+	$result = ["success" => false];
 	if (!curl_errno($ch)) {
 		$ai_response = json_decode($response, true);
 		$result['success'] = true;
@@ -49,7 +49,7 @@ function call_ai($ticket_id) {
 	$message = isset($ai_response['candidates'][0]['content']['parts'][0]['text'])?
 	$ai_response['candidates'][0]['content']['parts'][0]['text']:
 	"Algum erro aconteceu";
-	$result['success'] &= insert_chat_message($ticket_id, 'ai', $message) > 0;
+	$result['success'] = $result['success'] && insert_chat_message($ticket_id, 'ai', $message) > 0;
 	if (!$result['success']) {
 		$new_message['error'] = error_get_last();
 	} else {

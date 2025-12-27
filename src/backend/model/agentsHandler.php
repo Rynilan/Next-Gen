@@ -57,6 +57,6 @@ function insert_agent($cnpj, $pass, $fantasy_name, $real_name) {
         'fantasy_name' => $fantasy_name,
         'real_name' => $real_name   
     ];
-    return insert('users', $data);
+    return insert('agents', $data);
 }
 ?>

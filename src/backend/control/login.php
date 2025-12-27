@@ -10,19 +10,29 @@ function set_error(&$array, $error_message) {
 	$array['redirect'] = null;
 }
 
+function format_cnpj($cnpj) {
+	$numbersOnly = preg_replace('/\D/', '', $cnpj);
+   	return $numbersOnly; 
+}
+
 function login($login, $password) {
 	$result = [
 		'success' => true,
 		'error_message' => '',
-		'redirect' => $_ENV['ROOT_URL'].'src/frontend/view/loader.php?page_name=main'
+		'redirect' => 'main'
 	];
 
 	$stored = [];
+	$login = strtolower($login);
 	if (validate_mail($login)) {
 		$stored = get_user($login);
-	} else if (validate_cnpj($login)) {
-		$stored = get_agent($login);
 	} else {
+		$login = format_cnpj($login);
+		if (validate_cnpj($login)) {
+			$stored = get_agent($login);
+		}
+	}
+   	if (empty($stored)) {
 		set_error($result, 'Credenciais inválidas.');
 	}
 
