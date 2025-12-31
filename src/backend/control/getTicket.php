@@ -1,6 +1,5 @@
 <?php
 
-include 'utils/showErrors.php';
 include 'utils/logged.php';
 include 'utils/getAcess.php';
 require_once '../model/ticketsHandler.php';

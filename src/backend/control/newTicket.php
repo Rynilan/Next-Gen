@@ -1,6 +1,5 @@
 <?php
 
-include 'utils/showErrors.php';
 include 'utils/logged.php';
 require_once 'utils/loadEnv.php';
 require_once 'utils/loadSession.php';

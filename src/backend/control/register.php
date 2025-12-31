@@ -1,6 +1,5 @@
 <?php
 
-include 'utils/showErrors.php';
 require_once 'utils/getAcess.php';
 require_once '../model/usersHandler.php';
 require_once '../model/agentsHandler.php';

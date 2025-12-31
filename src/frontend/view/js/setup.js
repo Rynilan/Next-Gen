@@ -16,14 +16,13 @@ export async function controlFetch(fileAndArgs) {
 		if (response.ok) {
 			return await response.json();
 		} else {
-			alert('Wait!');
-			//redirect('error', response.status);
+			redirect('error', response.status);
 			return null;
 		}
 	} catch (error) {
 		alert('Alguma coisa deu errado ' + error);
 		console.log(error);
-		//redirect('error', 500, error);
+		redirect('error', 500, error);
 	}
 }
 window.controlFetch = controlFetch;

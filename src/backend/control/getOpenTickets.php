@@ -1,5 +1,4 @@
 <?php
-include 'utils/showErrors.php';
 include 'utils/logged.php';
 include 'utils/getAcess.php';
 include 'utils/loadSession.php';
