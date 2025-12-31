@@ -1,0 +1,54 @@
+main > p {
+	text-align: justify;
+}
+
+main > p > strong {
+	margin: 8px 0px 12px;
+	text-align: center;
+	padding: 8px;
+	display: block;
+}
+
+main > h3 {
+	text-align: center;
+	margin: 20px 0px 30px;
+}
+
+#us {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 5em;
+	padding: 20px;
+	border: 5px solid;
+	border-image: radial-gradient(gray, white) 1;
+	background-image: linear-gradient(white, gray, white, gray, white);
+}
+#us > .dev:nth-child(even) {
+	flex-direction: row-reverse;
+}
+#us > .dev:nth-child(odd) {
+	flex-direction: row;
+}
+.dev {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+.us > .dev:nth-child(even) > img {
+	order: 2;
+}
+.dev > img {
+	height: 250px;
+	aspect-ratio: 1/1;
+	object-fit: contain;
+}
+.info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.social {
+	display: flex;
+	justify-content: space-around;
+}

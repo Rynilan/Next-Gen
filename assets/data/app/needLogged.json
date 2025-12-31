@@ -1,4 +1,4 @@
 {
-	"true": ["main", "ticketCreation", "chat"],
-	"false": ["error", "login", "about", "register"]
+	"true": ["main", "ticketCreation", "chat", "listTickets", "accountInfo"],
+	"false": ["error", "login", "about", "register", "home", "error"]
 }

@@ -16,6 +16,7 @@ export async function controlFetch(fileAndArgs) {
 		if (response.ok) {
 			return await response.json();
 		} else {
+			alert('wait');
 			redirect('error', response.status);
 			return null;
 		}
@@ -137,10 +138,10 @@ async function putDefaultFunctions() {
 	});
 	// Função para ir para o sobre.
 	listenClick('about', () => {redirect('about');});
-	// Função para gerir alunos.
+	// Função para ver tickets.
 	listenClick('allTickets', () => {redirect('listTickets');});
-	// Função para gerir materiais.
-	listenClick('accountInfo', () => {redirect('account_info');});
+	// Função para ver informações da conta.
+	listenClick('accountInfo', () => {redirect('accountInfo');});
 }
 
 async function putData() {

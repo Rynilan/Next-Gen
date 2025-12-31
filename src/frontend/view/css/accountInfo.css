@@ -1,0 +1,9 @@
+#loggedImg {
+	width: 250px;
+	height: auto;
+	border-radius: 50%;
+	border: 2px solid var(--royal-green);
+	display: block;
+	margin: 0px auto;
+	object-fit: cover;
+}

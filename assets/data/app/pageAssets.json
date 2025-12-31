@@ -40,6 +40,16 @@
 		"css": ["listTickets"],
 		"js": ["loadTickets", "createTicketCard"] 
 	},
+	"about": {
+		"title": "Sobre nós",
+		"css": ["about"],
+		"js": ["showDevs"]
+	},
+	"accountInfo": {
+		"title": "Você",
+		"css": ["accountInfo"],
+		"js": ["accountInfo"]
+	},
 	"error": {
 		"400": {
 			"css": ["error"],
