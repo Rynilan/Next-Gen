@@ -3,6 +3,7 @@ include 'utils/logged.php';
 include 'utils/getAcess.php';
 include '../model/ticketsHandler.php';
 
+/** send and register a message on the database */
 function message($message, $ticket_id) {
 	if (str_starts_with($message, '<file name=')) return ['success' => false, 'error' => 'Mensagem inválida.'];
 

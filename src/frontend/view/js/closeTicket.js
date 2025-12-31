@@ -17,7 +17,7 @@ async function closeTicket() {
 		'&finish=' + encodeURIComponent(prompt('Como se deu a finalização do chamado?'))
 	);
 	if (result.success) {
-		alert('Ticket fechado com sucesso.');
+		alert('Chamado fechado com sucesso.');
 		redirect('main');
 	} else {
 		alert(result.error);

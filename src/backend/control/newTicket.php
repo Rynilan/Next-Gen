@@ -15,6 +15,7 @@ function set_error(&$array, $error) {
 	$array['message'] = $error;
 }
 
+/** Create a new ticket after querying all the data needed */
 function new_ticket() {
 	$result = ['success' => true, 'message' => 'Chamado aberto'];
 

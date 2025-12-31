@@ -6,6 +6,10 @@ require_once '../model/ticketsHandler.php';
 require_once '../model/usersHandler.php';
 require_once '../model/agentsHandler.php';
 
+/** Return the ticket info of a specific ticket
+* @param string $ticket_id the id of the ticket to get the info.
+* @return array the ticket info
+*/
 function ticket($ticket_id) {
 	$ticket = get_ticket($ticket_id);
 	$ticket['chat'] = chat_fetch($ticket_id);

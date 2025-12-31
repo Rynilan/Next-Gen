@@ -1,4 +1,7 @@
 <?php
+
+/** Clear all the SESSION variable to end the user session. */
+
 require_once 'utils/loadSession.php';
 
 $_SESSION['USER_CREDENTIAL'] = null;

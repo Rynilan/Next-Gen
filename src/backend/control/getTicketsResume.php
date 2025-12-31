@@ -5,6 +5,7 @@ require_once 'utils/loadSession.php';
 require_once '../model/ticketsHandler.php';
 require_once 'utils/getAcess.php';
 
+/** Get a resume of all the tickets of the current logged user */
 function get_tickets_resume() {
 	$tickets = [];
 	

@@ -7,6 +7,10 @@ require_once '../model/ticketsHandler.php';
 require_once '../model/agentsHandler.php';
 require_once '../model/usersHandler.php';
 
+/** Gera uma resposta automática de IA para um chamado de suporte.
+* @param int|string $ticket_id identificador único do chamado.
+* @return array resultado da operação contendo sucesso, mensagem ou erro.
+*/
 function call_ai($ticket_id) {
 	$ticket = get_ticket($ticket_id);
 	$agent = get_agent($ticket['agent_cnpj'])['real_name'];

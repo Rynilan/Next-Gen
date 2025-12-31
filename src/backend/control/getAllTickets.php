@@ -6,6 +6,7 @@ require_once '../model/ticketsHandler.php';
 require_once '../model/agentsHandler.php';
 require_once '../model/usersHandler.php';
 
+/** Get all the tickets of the current logged user. */
 function all_tickets() {
 	$credential = $_SESSION['USER_CREDENTIAL'];
 

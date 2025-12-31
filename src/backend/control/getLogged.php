@@ -1,5 +1,6 @@
 <?php
 
+/** Get the info of the current logged user */
 require_once 'utils/loadSession.php';
 echo json_encode([
 	'logged' => $_SESSION['LOGGED'],

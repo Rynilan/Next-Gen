@@ -14,6 +14,7 @@ function format_cnpj($cnpj) {
    	return $numbersOnly; 
 }
 
+/** Register a user after all the data was validated, compared and formatted */
 function register($credential, $pass, $name, $real_name, $according) {
 
 	$result = ['success' => true];

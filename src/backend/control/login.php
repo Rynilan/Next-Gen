@@ -4,6 +4,8 @@ include '../model/agentsHandler.php';
 require_once 'utils/loadEnv.php';
 require_once 'utils/validate.php';
 
+/** Validate, compare and assert login when tried */
+
 function set_error(&$array, $error_message) {
 	$array['success'] = false;
 	$array['error_message'] = $error_message;
